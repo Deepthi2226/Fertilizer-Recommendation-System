@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🌿 Fertilizer Recommendation</title>
+    <style>
+        body {
+            display: flex;
+            font-family: 'Segoe UI', sans-serif;
+            color: #333;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Left form area */
+        .form-section {
+            flex: 1;
+            padding: 60px;
+            background-color: #f9fff6;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2e7d32;
+        }
+
+        form {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            padding: 30px 40px;
+            max-width: 400px;
+            margin: 30px auto;
+        }
+
+        label {
+            display: inline-block;
+            width: 140px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        input, select {
+            padding: 6px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            width: 180px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Right image area */
+        .image-section {
+            flex: 1;
+            background: white url('https://tse3.mm.bing.net/th/id/OIP.zsgqf5FE0T6x3Zvp6Eee8wHaEL?pid=Api&P=0&h=180') no-repeat center right;
+            background-size: contain; /* show full image */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-section">
+        <h2>🌱 Fertilizer Recommendation System</h2>
+        <form action="/predict" method="post">
+            <label>Temperature:</label><input type="number" name="Temperature" step="0.1" required><br><br>
+            <label>Humidity:</label><input type="number" name="Humidity" step="0.1" required><br><br>
+            <label>Moisture:</label><input type="number" name="Moisture" step="0.1" required><br><br>
+
+            <label>Soil Type:</label>
+            <select name="Soil Type" required>
+                {% for soil in soil_types %}
+                    <option value="{{ soil }}">{{ soil }}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <label>Crop Type:</label>
+            <select name="Crop Type" required>
+                {% for crop in crop_types %}
+                    <option value="{{ crop }}">{{ crop }}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <label>Nitrogen:</label><input type="number" name="Nitrogen" step="0.1" required><br><br>
+            <label>Potassium:</label><input type="number" name="Potassium" step="0.1" required><br><br>
+            <label>Phosphorous:</label><input type="number" name="Phosphorous" step="0.1" required><br><br>
+
+            <button type="submit">Get Recommendation</button>
+        </form>
+    </div>
+
+    <div class="image-section"></div>
+</body>
+</html>
